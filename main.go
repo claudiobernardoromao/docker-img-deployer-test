@@ -1,13 +1,13 @@
 package main
 
 import (
-	"io"
+//	"io"
 	"os"
 	"log"
 
 	"github.com/docker/docker/client"
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/api/types/container"
+//	"github.com/docker/docker/api/types/container"
 	"golang.org/x/net/context"
 )
 
@@ -37,4 +37,4 @@ func logTo(fileName string) *os.File {
 	}
 	log.SetOutput(f)
 	return f
-
+}

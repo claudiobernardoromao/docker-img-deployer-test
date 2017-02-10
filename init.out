@@ -1,0 +1,4 @@
+2017/02/10 12:07:04  Create context
+2017/02/10 12:07:04  Create NewEnvClient 
+2017/02/10 12:07:04  Client Created
+2017/02/10 12:07:04 Error response from daemon: client is newer than server (client API version: 1.26, server API version: 1.23)
