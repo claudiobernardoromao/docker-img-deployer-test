@@ -1,9 +1,10 @@
 package main
 
 import (
-//	"io"
+	"io"
 	"os"
 	"log"
+	"fmt"
 
 	"github.com/docker/docker/client"
 	"github.com/docker/docker/api/types"
@@ -12,7 +13,7 @@ import (
 )
 
 func main() {
-
+	fmt.Println(" teste do console")
 	logTo("init.out")
 	log.Println(" Create context")
 	ctx := context.Background()
@@ -22,12 +23,25 @@ func main() {
 		panic(err)
 	}
 	log.Println(" Client Created")
-	_, err = cli.ImagePull(ctx, "nginx", types.ImagePullOptions{})
+	ref := "nginx:latest"
+
+	err = imagePull(cli,ref)
+
+func imagePull(cli *client.Client, ref string) error {
+	log.Printf("Pulling %q from the registry...\n", ref)
+	resp, err := cli.ImagePull(context.Background(), ref, types.ImagePullOptions{})
 	if err != nil {
-		log.Println(err)
-		panic(err)
+		return err
 	}
-	
+	defer resp.Close()
+	if _, err = io.Copy(ioutil.Discard, resp); err != nil {
+		return err
+	}
+	log.Println("Image pull complete")
+	return nil
+}
+
+
 }
 func logTo(fileName string) *os.File {
 	f, err := os.Create(fileName)
