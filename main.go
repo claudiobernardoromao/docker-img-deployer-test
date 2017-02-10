@@ -26,7 +26,7 @@ func main() {
 	ref := "nginx:latest"
 
 	err = imagePull(cli,ref)
-
+}
 func imagePull(cli *client.Client, ref string) error {
 	log.Printf("Pulling %q from the registry...\n", ref)
 	resp, err := cli.ImagePull(context.Background(), ref, types.ImagePullOptions{})
@@ -41,8 +41,6 @@ func imagePull(cli *client.Client, ref string) error {
 	return nil
 }
 
-
-}
 func logTo(fileName string) *os.File {
 	f, err := os.Create(fileName)
 	if err != nil {
