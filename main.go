@@ -22,7 +22,6 @@ func main() {
 		panic(err)
 	}
 	log.Println(" Client Created")
-	
 	_, err = cli.ImagePull(ctx, "nginx", types.ImagePullOptions{})
 	if err != nil {
 		log.Println(err)
