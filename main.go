@@ -28,13 +28,13 @@ func main() {
 		log.Println(err)
 		panic(err)
 	}
-
-	func logTo(fileName string) *os.File {
+	
+}
+func logTo(fileName string) *os.File {
 	f, err := os.Create(fileName)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	log.SetOutput(f)
 	return f
-}
-}
+
